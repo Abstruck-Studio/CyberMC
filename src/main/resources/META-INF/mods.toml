@@ -1,0 +1,11 @@
+modLoader="javafml"
+loaderVersion="[34,)"
+license="GNU GPLv3"
+[[mods]]
+modId="cybermc"
+version="${file.jarVersion}"
+displayName="CyberMC"
+authors="Abstruck"
+description='''
+This is Boson, the 1.16 Modding tutorial example mod.
+'''
