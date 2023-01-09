@@ -1,0 +1,23 @@
+package org.abstruck.mc.cybermc.init;
+
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.network.PacketBuffer;
+import net.minecraftforge.common.extensions.IForgeContainerType;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.abstruck.mc.cybermc.Utils;
+import org.abstruck.mc.cybermc.container.OperatingTableContainer;
+
+/**
+ * @author Goulixiaoji
+ */
+public class ContainerTypeInit {
+    public static final DeferredRegister<ContainerType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.CONTAINERS, Utils.MOD_ID);
+
+    public static final RegistryObject<ContainerType<OperatingTableContainer>> OPERATING_TABLE_CONTAINER_TYPE = REGISTER.register(
+            "operating_table_container",
+            () -> IForgeContainerType.create(OperatingTableContainer::new)
+    );
+}
