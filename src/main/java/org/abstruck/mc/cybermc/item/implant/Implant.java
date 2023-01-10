@@ -1,8 +1,12 @@
 package org.abstruck.mc.cybermc.item.implant;
 
 import net.minecraft.item.Item;
+import org.abstruck.mc.cybermc.init.ItemInit;
 import org.abstruck.mc.cybermc.item.IHasBasicInformation;
 import org.abstruck.mc.cybermc.item.itemgroup.ModItemGroups;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -14,6 +18,11 @@ public abstract class Implant extends Item implements IHasBasicInformation,ITypa
      }
 
      public static Implant implantFactory(String str){
+         List<Implant> list = ItemInit.implants.stream().filter(i->i.getName().equals(str)).collect(Collectors.toList());
+         if (list.isEmpty()){
+             return null;
+         }
+         return list.get(0);
      }
 }
 

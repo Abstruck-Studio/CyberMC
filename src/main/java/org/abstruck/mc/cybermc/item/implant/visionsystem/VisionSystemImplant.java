@@ -10,6 +10,6 @@ import org.abstruck.mc.cybermc.item.implant.ImplantType;
 public abstract class VisionSystemImplant extends Implant {
     @Override
     public ImplantType getType() {
-        return ImplantType.VEISIONSYSTEM;
+        return ImplantType.VISION_SYSTEM;
     }
 }

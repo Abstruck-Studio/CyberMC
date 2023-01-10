@@ -11,6 +11,7 @@ import org.abstruck.mc.cybermc.item.implant.backbone.Sandevistan;
 import org.abstruck.mc.cybermc.item.itemgroup.ModItemGroups;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Astrack, Goulixiaoji
@@ -25,6 +26,6 @@ public class ItemInit {
     public static final RegistryObject<Item> OPERATING_TABLE = REGISTER.register("operating_table",()->new BlockItem(BlockInit.OPERATING_TABLE.get(),new Item.Properties().tab(ModItemGroups.CYBER_MACHINE_ITEM_GROUP)));
 
     static {
-
+        implants.add((Implant) SANDEVISTAN.get());
     }
 }
