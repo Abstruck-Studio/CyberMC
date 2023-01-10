@@ -15,14 +15,15 @@ import javax.annotation.Nonnull;
  * @author Goulixiaoji
  */
 public class CyberMcCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundNBT> {
-    private IModCapability capability;
+    private IModCapability capability = new CyberMcCapability();
 
     @Nonnull
     public IModCapability get(){
-        if(capability == null){
-            capability = new CyberMcCapability();
-        }
         return capability;
+    }
+
+    public void setCapability(IModCapability capability){
+        this.capability = capability;
     }
 
     @Override

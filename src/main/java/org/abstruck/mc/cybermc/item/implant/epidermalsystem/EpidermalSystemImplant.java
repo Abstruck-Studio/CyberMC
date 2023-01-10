@@ -9,6 +9,6 @@ import org.abstruck.mc.cybermc.item.implant.ImplantType;
 public abstract class EpidermalSystemImplant extends Implant {
     @Override
     public ImplantType getType() {
-        return ImplantType.EPIDERMALSYSTEM;
+        return ImplantType.EPIDERMAL_SYSTEM;
     }
 }

@@ -18,7 +18,7 @@ import org.abstruck.mc.cybermc.capability.ModCapability;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author Goulixiaoji
+ * @author Goulixiaoji,astrack
  */
 @Mod.EventBusSubscriber
 public class CapabilityEvent {
@@ -30,7 +30,7 @@ public class CapabilityEvent {
     }
 
     @SubscribeEvent
-    public static void playerCloned(PlayerEvent.Clone event){
+    public static void playerCloned(PlayerEvent.@NotNull Clone event){
         PlayerEntity player = event.getPlayer();
         World world = player.getCommandSenderWorld();
         if (world.isClientSide){
@@ -38,14 +38,19 @@ public class CapabilityEvent {
         }
 
         MinecraftServer server = world.getServer();
-        boolean keepInventory = server.getGameRules().getBoolean(new GameRules.RuleKey<>("keepInventory", GameRules.Category.PLAYER));
-        if (!keepInventory){
+        assert server != null;
+        boolean isKeepInventory = server.getGameRules().getBoolean(new GameRules.RuleKey<>("keepInventory", GameRules.Category.PLAYER));
+        if (!(isKeepInventory && event.isWasDeath())){
             return;
         }
         LazyOptional<IModCapability> oldSpeedCap = event.getOriginal().getCapability(ModCapability.CAP);
         LazyOptional<IModCapability> newSpeedCap = event.getPlayer().getCapability(ModCapability.CAP);
         if (oldSpeedCap.isPresent() && newSpeedCap.isPresent()) {
-            newSpeedCap.ifPresent((newCap) -> oldSpeedCap.ifPresent((oldCap) -> newCap.deserializeNBT(oldCap.serializeNBT())));
+            newSpeedCap.ifPresent((newCap) -> {
+                oldSpeedCap.ifPresent((oldCap) ->{
+                    newCap.deserializeNBT(oldCap.serializeNBT());
+                });
+            });
         }
 
 
