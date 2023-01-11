@@ -27,8 +27,8 @@ public enum ImplantType {
      * @param xSize 某个东西的x size（我也不知道是什么
      * @return slot 的 x坐标
      */
-    public int getSlotX(int width,int xSize){
-        int aPart = (width-xSize-32)/6;
+    public int getSlotX(int width){
+        int aPart = (width-32)/6;
         switch (this){
             case BRAIN:
             case BONE:
@@ -45,8 +45,8 @@ public enum ImplantType {
         }
         return 0;
     }
-    public int getSlotY(int height,int ySize){
-        int aPart = (height-ySize)/6;
+    public int getSlotY(int height){
+        int aPart = (height)/6;
         switch (this){
             case BRAIN:
             case VISION_SYSTEM:
