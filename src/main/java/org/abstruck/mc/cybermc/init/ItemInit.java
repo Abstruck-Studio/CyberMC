@@ -25,7 +25,4 @@ public class ItemInit {
     //以下是方块
     public static final RegistryObject<Item> OPERATING_TABLE = REGISTER.register("operating_table",()->new BlockItem(BlockInit.OPERATING_TABLE.get(),new Item.Properties().tab(ModItemGroups.CYBER_MACHINE_ITEM_GROUP)));
 
-    static {
-        implants.add((Implant) SANDEVISTAN.get());
-    }
 }

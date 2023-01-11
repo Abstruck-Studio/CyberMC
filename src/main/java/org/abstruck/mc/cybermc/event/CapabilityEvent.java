@@ -25,7 +25,7 @@ public class CapabilityEvent {
     @SubscribeEvent
     public static void attachCapability(@NotNull AttachCapabilitiesEvent<Entity> event){
         if (event.getObject() instanceof PlayerEntity){
-            event.addCapability(new ResourceLocation(Utils.MOD_ID, "modCap"), new CyberMcCapabilityProvider());
+            event.addCapability(new ResourceLocation(Utils.MOD_ID, "mod_cap"), new CyberMcCapabilityProvider());
         }
     }
 

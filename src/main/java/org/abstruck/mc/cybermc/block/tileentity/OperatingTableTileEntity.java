@@ -5,23 +5,22 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.BedTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.abstruck.mc.cybermc.Utils;
 import org.abstruck.mc.cybermc.container.OperatingTableContainer;
-import org.abstruck.mc.cybermc.init.TileEntityTypeInit;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Astrack
  */
-public class OperatingTableTileEntity extends TileEntity implements INamedContainerProvider {
-    public OperatingTableTileEntity() {
-        super(TileEntityTypeInit.OPERATING_TABLE_TILEENTITY.get());
-    }
+public class OperatingTableTileEntity extends BedTileEntity implements INamedContainerProvider {
 
+    public OperatingTableTileEntity(){
+        super();
+    }
 
     @Override
     public @NotNull ITextComponent getDisplayName() {
