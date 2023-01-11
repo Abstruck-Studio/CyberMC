@@ -34,6 +34,7 @@ public class CyberMC {
         ItemInit.REGISTER.register(bus);
         BlockInit.REGISTER.register(bus);
         TileEntityTypeInit.TILE_ENTITIES.register(bus);
+        ContainerTypeInit.REGISTER.register(bus);
         MinecraftForge.EVENT_BUS.addListener(CyberMC::onClientSetupEvent);
     }
 

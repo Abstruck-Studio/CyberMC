@@ -4,7 +4,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.BedTileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -30,7 +29,6 @@ public class OperatingTableTileEntity extends BedTileEntity implements INamedCon
     @Nullable
     @Override
     public Container createMenu(int sycID, @NotNull PlayerInventory inventory, @NotNull PlayerEntity player) {
-        PacketBuffer packetBuffer = null;
-        return new OperatingTableContainer(sycID,inventory,packetBuffer,player.getCommandSenderWorld());
+        return new OperatingTableContainer(sycID,inventory,player,this);
     }
 }
