@@ -18,7 +18,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import org.abstruck.mc.cybermc.block.tileentity.OperatingTableTileEntity;
-import org.abstruck.mc.cybermc.capability.ModCapability;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -53,8 +52,6 @@ public class OperatingTable extends BedBlock {
             assert operatingTableTileEntity != null;
             //把方块实体的坐标放进packetBuffer里
             packetBuffer.writeBlockPos(operatingTableTileEntity.getBlockPos());
-
-            player.getCapability(ModCapability.CAP).ifPresent(cap->packetBuffer.writeNbt(cap.serializeNBT()));
         });
 
         return ActionResultType.SUCCESS;

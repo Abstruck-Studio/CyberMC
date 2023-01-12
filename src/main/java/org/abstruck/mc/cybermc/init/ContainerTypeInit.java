@@ -1,8 +1,6 @@
 package org.abstruck.mc.cybermc.init;
 
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +16,6 @@ public class ContainerTypeInit {
 
     public static final RegistryObject<ContainerType<OperatingTableContainer>> OPERATING_TABLE_CONTAINER_TYPE = REGISTER.register(
             "operating_table_container",
-            () -> IForgeContainerType.create(OperatingTableContainer::new)
+            () -> IForgeContainerType.create(((windowId, inv, data) -> new OperatingTableContainer(windowId,inv,data.readBlockPos())))
     );
 }

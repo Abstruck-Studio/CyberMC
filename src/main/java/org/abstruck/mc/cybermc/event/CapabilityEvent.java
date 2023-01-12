@@ -15,6 +15,7 @@ import org.abstruck.mc.cybermc.Utils;
 import org.abstruck.mc.cybermc.capability.CyberMcCapabilityProvider;
 import org.abstruck.mc.cybermc.capability.IModCapability;
 import org.abstruck.mc.cybermc.capability.ModCapability;
+import org.abstruck.mc.cybermc.profile.PlayerProfileManager;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,9 +25,17 @@ import org.jetbrains.annotations.NotNull;
 public class CapabilityEvent {
     @SubscribeEvent
     public static void attachCapability(@NotNull AttachCapabilitiesEvent<Entity> event){
-        if (event.getObject() instanceof PlayerEntity){
-            event.addCapability(new ResourceLocation(Utils.MOD_ID, "mod_cap"), new CyberMcCapabilityProvider());
+        if (!(event.getObject() instanceof PlayerEntity)){
+            return;
         }
+        event.addCapability(new ResourceLocation(Utils.MOD_ID, "mod_cap"), new CyberMcCapabilityProvider());
+
+        PlayerEntity player = (PlayerEntity) event.getObject();
+        if (PlayerProfileManager.getInstance().isPlayerProfileExist(player)){
+            PlayerProfileManager.getInstance().updateProfile((PlayerEntity) event.getObject());
+            return;
+        }
+        PlayerProfileManager.getInstance().addPlayer(player);
     }
 
     @SubscribeEvent

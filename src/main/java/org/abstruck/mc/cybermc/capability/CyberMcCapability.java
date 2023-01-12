@@ -34,10 +34,19 @@ public class CyberMcCapability implements IModCapability{
 
         implantMap.forEach((key, value) -> {
             StringBuffer v = new StringBuffer();
-            //将value这个list转换为string储存，每条数据之间用","隔开了
-            value.forEach(implant -> v.append(implant.getName()).append(","));
-            //删除算法原因导致的最后末尾的","
-            v.deleteCharAt(v.length() - 1);
+            if (value!=null&&!value.isEmpty()){
+                //将value这个list转换为string储存，每条数据之间用","隔开了
+                value.forEach(implant -> {
+                    if (implant!=null){
+                        v.append(implant.getName()).append(",");
+                    }
+                });
+                //删除算法原因导致的最后末尾的","
+                if (v.length()>1){
+                    v.deleteCharAt(v.length() - 1);
+                }
+            }
+
 
             nbt.putString(key, v.toString());
         });
