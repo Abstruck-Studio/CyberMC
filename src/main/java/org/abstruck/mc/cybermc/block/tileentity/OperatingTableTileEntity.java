@@ -4,21 +4,22 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.tileentity.BedTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import org.abstruck.mc.cybermc.Utils;
 import org.abstruck.mc.cybermc.container.OperatingTableContainer;
+import org.abstruck.mc.cybermc.init.TileEntityTypeInit;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Astrack
  */
-public class OperatingTableTileEntity extends BedTileEntity implements INamedContainerProvider {
+public class OperatingTableTileEntity extends TileEntity implements INamedContainerProvider {
 
     public OperatingTableTileEntity(){
-        super();
+        super(TileEntityTypeInit.OPERATING_TABLE_TILEENTITY.get());
     }
 
     @Override
@@ -29,6 +30,7 @@ public class OperatingTableTileEntity extends BedTileEntity implements INamedCon
     @Nullable
     @Override
     public Container createMenu(int sycID, @NotNull PlayerInventory inventory, @NotNull PlayerEntity player) {
-        return new OperatingTableContainer(sycID,inventory,player,this);
+        return new OperatingTableContainer(sycID,inventory,this.getBlockPos());
     }
+
 }
