@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * @author Astrack
  */
+// @OnlyIn(Dist.DEDICATED_SERVER)
 public class PlayerProfileManager {
     public static PlayerProfileManager INSTANCE = new PlayerProfileManager();
     private Map<PlayerEntity,PlayerProfile> playerProfiles;
@@ -42,5 +43,9 @@ public class PlayerProfileManager {
 
     public static PlayerProfileManager getInstance() {
         return INSTANCE;
+    }
+
+    public void updateImplantInventory(PlayerEntity player){
+        getProfile(player).updateImplantInventory();
     }
 }

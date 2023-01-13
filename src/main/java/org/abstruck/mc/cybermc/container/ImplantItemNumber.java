@@ -3,23 +3,31 @@ package org.abstruck.mc.cybermc.container;
 import net.minecraft.util.IIntArray;
 
 /**
- * @author Goulixiaoji
+ * @author Astrack,Goulixiaoji
  */
 public class ImplantItemNumber implements IIntArray {
+    int[] array;
 
+    public ImplantItemNumber(int size){
+        this.array = new int[size];
+    }
+
+    public ImplantItemNumber(int[] array){
+        this.array = array;
+    }
 
     @Override
     public int getCount() {
-        return 0;
+        return array.length;
     }
 
     @Override
-    public void set(int p_221477_1_, int p_221477_2_) {
-
+    public void set(int index, int value) {
+        array[index] = value;
     }
 
     @Override
-    public int get(int p_221476_1_) {
-        return 0;
+    public int get(int index) {
+        return array[index];
     }
 }

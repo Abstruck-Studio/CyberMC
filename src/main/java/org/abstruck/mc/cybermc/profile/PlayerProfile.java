@@ -5,6 +5,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import org.abstruck.mc.cybermc.capability.ModCapability;
+import org.abstruck.mc.cybermc.item.implant.IActive;
 import org.abstruck.mc.cybermc.item.implant.Implant;
 import org.abstruck.mc.cybermc.item.implant.ImplantType;
 import org.jetbrains.annotations.NotNull;
@@ -13,11 +14,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Astrack
  */
+// @OnlyIn(Dist.DEDICATED_SERVER)
 public class PlayerProfile {
+    private boolean isShowedActiveImplantHud;
     private PlayerEntity player;
 
     private Map<ImplantType, List<Implant>> implants;
@@ -27,6 +31,7 @@ public class PlayerProfile {
     public PlayerProfile(@NotNull PlayerEntity player){
         this.player = player;
         implants = new HashMap<>();
+        isShowedActiveImplantHud = false;
         update();
         updateImplantInventory();
     }
@@ -42,7 +47,7 @@ public class PlayerProfile {
         }
     });}
 
-    private void updateImplantInventory(){
+    public void updateImplantInventory(){
         implantInventory = new Inventory(27);
         int index =0;
         for (ImplantType type:ImplantType.values()){
@@ -66,11 +71,35 @@ public class PlayerProfile {
         return getTypeImplantsMap().get(type);
     }
 
+    public List<Implant> getAllImplants(){
+        List<Implant> result = new ArrayList<>();
+        for (ImplantType type:getTypeImplantsMap().keySet()){
+            result.addAll(implants.get(type));
+        }
+        return result;
+    }
+
+    public List<Implant> getAllActiveImplants(){
+        List<Implant> result = new ArrayList<>();
+        for (ImplantType type:getTypeImplantsMap().keySet()){
+            result.addAll(implants.get(type).stream().filter(implant -> implant instanceof IActive).collect(Collectors.toList()));
+        }
+        return result;
+    }
+
     public PlayerEntity getPlayer() {
         return player;
     }
 
     public IInventory getImplantInventory() {
         return implantInventory;
+    }
+
+    public boolean getIsShowedActiveImplantHud(){
+        return  isShowedActiveImplantHud;
+    }
+
+    public void setShowedActiveImplantHud(boolean showedActiveImplantHud) {
+        isShowedActiveImplantHud = showedActiveImplantHud;
     }
 }

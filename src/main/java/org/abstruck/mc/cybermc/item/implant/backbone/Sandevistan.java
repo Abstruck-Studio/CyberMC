@@ -1,10 +1,11 @@
 package org.abstruck.mc.cybermc.item.implant.backbone;
 
 
+import net.minecraft.entity.player.PlayerEntity;
 import org.abstruck.mc.cybermc.item.ProductionCompany;
 import org.abstruck.mc.cybermc.item.Quality;
+import org.abstruck.mc.cybermc.item.implant.ActivateImplantInformation;
 import org.abstruck.mc.cybermc.item.implant.IActive;
-import org.abstruck.mc.cybermc.item.implant.Implant;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -61,5 +62,11 @@ public class Sandevistan extends BackboneImplant implements IActive {
     @Override
     public Quality getQuality() {
         return Quality.LEGEND;
+    }
+
+    @Override
+    public ActivateImplantInformation sendActivatePack(@NotNull PlayerEntity player) {
+        System.out.println(player.getName().getString() + " 成功使用了" + NAME);
+        return ActivateImplantInformation.SUCCESS;
     }
 }

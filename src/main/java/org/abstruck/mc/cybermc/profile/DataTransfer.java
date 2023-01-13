@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * @author Astrack
  */
+// @OnlyIn(Dist.DEDICATED_SERVER)
 public class DataTransfer {
     Map<ImplantType, List<Implant>> implants;
 
