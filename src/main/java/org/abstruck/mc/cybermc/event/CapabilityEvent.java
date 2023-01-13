@@ -32,7 +32,8 @@ public class CapabilityEvent {
 
         PlayerEntity player = (PlayerEntity) event.getObject();
         if (PlayerProfileManager.getInstance().isPlayerProfileExist(player)){
-            PlayerProfileManager.getInstance().updateProfile((PlayerEntity) event.getObject());
+            PlayerProfileManager.getInstance().updateProfile(player);
+            PlayerProfileManager.getInstance().updateImplantInventory(player);
             return;
         }
         PlayerProfileManager.getInstance().addPlayer(player);
@@ -62,7 +63,12 @@ public class CapabilityEvent {
             });
         }
 
-
+        if (PlayerProfileManager.getInstance().isPlayerProfileExist(player)){
+            PlayerProfileManager.getInstance().updateProfile(player);
+            PlayerProfileManager.getInstance().updateImplantInventory(player);
+            return;
+        }
+        PlayerProfileManager.getInstance().addPlayer(player);
 
     }
 }

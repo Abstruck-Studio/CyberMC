@@ -1,17 +1,17 @@
 package org.abstruck.mc.cybermc.capability;
 
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
 import org.abstruck.mc.cybermc.item.implant.Implant;
 import org.abstruck.mc.cybermc.item.implant.ImplantType;
-import org.lwjgl.system.CallbackI;
 
 import java.util.List;
 
 /**
- * @author Goulixiaoji
+ * @author Goulixiaoji,Astrack
  */
-public interface IModCapability extends INBTSerializable<CompoundNBT> {
+public interface IModCapability extends INBTSerializable<CompoundNBT>, Capability.IStorage<IModCapability> {
     /**
      * 用于获取部件物品ID
      * @param type 该部件的类型

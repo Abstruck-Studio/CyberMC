@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @Mod.EventBusSubscriber
 public class PlayerLogInEvent {
     @SubscribeEvent
-    public void playerLogIn(@NotNull EntityJoinWorldEvent event){
+    public static void playerLogIn(@NotNull EntityJoinWorldEvent event){
         if (!(event.getEntity() instanceof PlayerEntity)){
             return;
         }

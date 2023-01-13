@@ -9,7 +9,7 @@ import org.abstruck.mc.cybermc.Utils;
 import org.abstruck.mc.cybermc.container.OperatingTableContainer;
 
 /**
- * @author Goulixiaoji
+ * @author Goulixiaoji,Astrack
  */
 public class ContainerTypeInit {
     public static final DeferredRegister<ContainerType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.CONTAINERS, Utils.MOD_ID);
