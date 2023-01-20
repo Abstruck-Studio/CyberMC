@@ -7,7 +7,7 @@
 # Introduction
 
 Welcome to the __CyberMC__ mod - a mod that brings ___Some Great Features___ to your Minecraft game!
-这个项目暂时废弃了
+这个项目暂时转移到https://github.com/Kom3ng/CyberMC
 
 
 
